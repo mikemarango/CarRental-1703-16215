@@ -64,7 +64,7 @@ namespace Core.Common.Extensions
 
         public static bool IsBrowsable(this object obj, PropertyInfo property)
         {
-            string key = string.Format("{0}.{1}", obj.GetType(), property.Name);
+            string key = $"{obj.GetType()}.{property.Name}";
 
             if (!BrowsableProperties.ContainsKey(key))
             {
