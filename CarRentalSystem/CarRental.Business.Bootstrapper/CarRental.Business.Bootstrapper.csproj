@@ -58,6 +58,10 @@
       <Project>{93695f10-48a4-4299-b879-458c67495071}</Project>
       <Name>CarRental.Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarRental.Business\CarRental.Business.csproj">
+      <Project>{3DF6F8F4-2813-4781-9513-C53701AD607C}</Project>
+      <Name>CarRental.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRental.Data.Contracts\CarRental.Data.Contracts.csproj">
       <Project>{0c78a0c5-85b9-4241-8fcc-8941cb90a579}</Project>
       <Name>CarRental.Data.Contracts</Name>

@@ -1,4 +1,5 @@
-﻿using CarRental.Data.DataRepositories;
+﻿using CarRental.Business.BusinessEngines;
+using CarRental.Data.DataRepositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
@@ -15,6 +16,7 @@ namespace CarRental.Business.Bootstrapper
             AggregateCatalog catalog = new AggregateCatalog();
 
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(AccountRepository).Assembly));
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(CarRentalEngine).Assembly));
 
             CompositionContainer container = new CompositionContainer(catalog);
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{065EB8B9-1974-4946-AAED-7B438813F120}</ProjectGuid>
+    <ProjectGuid>{3DF6F8F4-2813-4781-9513-C53701AD607C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarRental.Business.Managers</RootNamespace>
-    <AssemblyName>CarRental.Business.Managers</AssemblyName>
+    <RootNamespace>CarRental.Business</RootNamespace>
+    <AssemblyName>CarRental.Business</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,7 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,10 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagerBase.cs" />
-    <Compile Include="Managers\AccountManager.cs" />
-    <Compile Include="Managers\InventoryManager.cs" />
-    <Compile Include="Managers\RentalManager.cs" />
+    <Compile Include="BusinessEngineFactory.cs" />
+    <Compile Include="BusinessEngines\CarRentalEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,17 +51,9 @@
       <Project>{cdc62295-69e6-4232-a963-53fb2989d83b}</Project>
       <Name>CarRental.Business.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CarRental.Business.Contracts\CarRental.Business.Contracts.csproj">
-      <Project>{2F468DAB-180B-4B53-8BA7-254F75177E34}</Project>
-      <Name>CarRental.Business.Contracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
       <Project>{93695f10-48a4-4299-b879-458c67495071}</Project>
       <Name>CarRental.Business.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarRental.Business\CarRental.Business.csproj">
-      <Project>{3df6f8f4-2813-4781-9513-c53701ad607c}</Project>
-      <Name>CarRental.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarRental.Common\CarRental.Common.csproj">
       <Project>{c2535d16-c49e-4e14-9ac6-697bf96a4cc1}</Project>
@@ -78,15 +68,11 @@
       <Name>CarRental.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Core.Common.Contracts\Core.Common.Contracts.csproj">
-      <Project>{245AA489-10EA-4C98-AA14-4AD8299EEE42}</Project>
+      <Project>{245aa489-10ea-4c98-aa14-4ad8299eee42}</Project>
       <Name>Core.Common.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.Common.ServiceModel\Core.Common.ServiceModel.csproj">
-      <Project>{607e7eaf-94b1-4abc-a55a-5233206c1c66}</Project>
-      <Name>Core.Common.ServiceModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
-      <Project>{511E07F0-A5C3-4939-9A32-21FB7C9BE66D}</Project>
+      <Project>{511e07f0-a5c3-4939-9a32-21fb7c9be66d}</Project>
       <Name>Core.Common</Name>
     </ProjectReference>
   </ItemGroup>
