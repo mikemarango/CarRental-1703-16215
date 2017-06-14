@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Common.Core
 {
+    [DataContract]
     public abstract class EntityBase : IExtensibleDataObject
     {
         #region IExtensibleDataObject Members
