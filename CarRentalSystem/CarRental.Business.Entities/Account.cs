@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace CarRental.Business.Entities
 {
     [DataContract]
-    public class Account : EntityBase, IIdentifiableEntity
+    public class Account : EntityBase, IIdentifiableEntity, IAccountOwnedEntity
     {
         [DataMember]
         public int AccountId { get; set; }
@@ -48,6 +48,15 @@ namespace CarRental.Business.Entities
         {
             get { return AccountId; }
             set { AccountId = value; }
+        }
+
+        #endregion
+
+        #region IAccountOwnedEntity
+
+        public int OwnerAccountId
+        {
+            get { return AccountId; }
         }
 
         #endregion

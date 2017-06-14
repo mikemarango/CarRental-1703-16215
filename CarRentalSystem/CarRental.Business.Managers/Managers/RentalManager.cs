@@ -11,9 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Security.Permissions;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarRental.Business.Managers.Managers
 {
@@ -48,9 +47,23 @@ namespace CarRental.Business.Managers.Managers
         [Import]
         IBusinessEngineFactory _BusinessEngineFactory;
 
+        protected override Account LoadAuthorizationValidationAccount(string loginName)
+        {
+            IAccountRepository accountRepository = _DataRepositoryFactory.GetDataRepository<IAccountRepository>();
+            Account authAcct = accountRepository.GetByLogin(loginName);
+            if (authAcct == null)
+            {
+                NotFoundException ex = new NotFoundException(string.Format("Cannot find account for login name {0} to use for security trimming.", loginName));
+                throw new FaultException<NotFoundException>(ex, ex.Message);
+            }
+
+            return authAcct;
+        }
+
         #region IRentalService operations
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public Rental RentCarToCustomer(string loginEmail, int carId, DateTime dateDueBack)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -79,6 +92,7 @@ namespace CarRental.Business.Managers.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public Rental RentCarToCustomer(string loginEmail, int carId, DateTime rentalDate, DateTime dateDueBack)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -107,6 +121,7 @@ namespace CarRental.Business.Managers.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public void AcceptCarReturn(int carId)
         {
             ExecuteFaultHandledOperation(() =>
@@ -127,6 +142,8 @@ namespace CarRental.Business.Managers.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public IEnumerable<Rental> GetRentalHistory(string loginEmail)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -141,12 +158,16 @@ namespace CarRental.Business.Managers.Managers
                     throw new FaultException<NotFoundException>(ex, ex.Message);
                 }
 
+                ValidateAuthorization(account);
+
                 IEnumerable<Rental> rentalHistory = rentalRepository.GetRentalHistoryByAccount(account.AccountId);
 
                 return rentalHistory;
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public Reservation GetReservation(int reservationId)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -161,11 +182,15 @@ namespace CarRental.Business.Managers.Managers
                     throw new FaultException<NotFoundException>(ex, ex.Message);
                 }
 
+                ValidateAuthorization(reservation);
+
                 return reservation;
             });
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public Reservation MakeReservation(string loginEmail, int carId, DateTime rentalDate, DateTime returnDate)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -179,6 +204,8 @@ namespace CarRental.Business.Managers.Managers
                     NotFoundException ex = new NotFoundException(string.Format("No account found for login '{0}'.", loginEmail));
                     throw new FaultException<NotFoundException>(ex, ex.Message);
                 }
+
+                ValidateAuthorization(account);
 
                 Reservation reservation = new Reservation()
                 {
@@ -195,6 +222,7 @@ namespace CarRental.Business.Managers.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public void ExecuteRentalFromReservation(int reservationId)
         {
             ExecuteFaultHandledOperation(() =>
@@ -239,6 +267,8 @@ namespace CarRental.Business.Managers.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public void CancelReservation(int reservationId)
         {
             ExecuteFaultHandledOperation(() =>
@@ -252,10 +282,13 @@ namespace CarRental.Business.Managers.Managers
                     throw new FaultException<NotFoundException>(ex, ex.Message);
                 }
 
+                ValidateAuthorization(reservation);
+
                 reservationRepository.Remove(reservationId);
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public CustomerReservationData[] GetCurrentReservations()
         {
             return ExecuteFaultHandledOperation(() =>
@@ -281,6 +314,8 @@ namespace CarRental.Business.Managers.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public CustomerReservationData[] GetCustomerReservations(string loginEmail)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -294,6 +329,8 @@ namespace CarRental.Business.Managers.Managers
                     NotFoundException ex = new NotFoundException(string.Format("No account found for login '{0}'.", loginEmail));
                     throw new FaultException<NotFoundException>(ex, ex.Message);
                 }
+
+                ValidateAuthorization(account);
 
                 List<CustomerReservationData> reservationData = new List<CustomerReservationData>();
 
@@ -314,6 +351,8 @@ namespace CarRental.Business.Managers.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.CarRentalUser)]
         public Rental GetRental(int rentalId)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -328,10 +367,13 @@ namespace CarRental.Business.Managers.Managers
                     throw new FaultException<NotFoundException>(ex, ex.Message);
                 }
 
+                ValidateAuthorization(rental);
+
                 return rental;
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public CustomerRentalData[] GetCurrentRentals()
         {
             return ExecuteFaultHandledOperation(() =>
@@ -357,6 +399,7 @@ namespace CarRental.Business.Managers.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public Reservation[] GetDeadReservations()
         {
             return ExecuteFaultHandledOperation(() =>
@@ -369,6 +412,7 @@ namespace CarRental.Business.Managers.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.CarRentalAdminRole)]
         public bool IsCarCurrentlyRented(int carId)
         {
             return ExecuteFaultHandledOperation(() =>

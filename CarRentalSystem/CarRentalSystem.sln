@@ -47,6 +47,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Managers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business", "CarRental.Business\CarRental.Business.csproj", "{3DF6F8F4-2813-4781-9513-C53701AD607C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Managers.Tests", "CarRental.Business.Managers.Tests\CarRental.Business.Managers.Tests.csproj", "{C7ADAB5D-5C35-4E73-9792-A4EC46383CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Tests", "CarRental.Business.Tests\CarRental.Business.Tests.csproj", "{E3492806-9649-45E4-A5DE-A7EBC248C9A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,14 @@ Global
 		{3DF6F8F4-2813-4781-9513-C53701AD607C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DF6F8F4-2813-4781-9513-C53701AD607C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DF6F8F4-2813-4781-9513-C53701AD607C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7ADAB5D-5C35-4E73-9792-A4EC46383CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7ADAB5D-5C35-4E73-9792-A4EC46383CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7ADAB5D-5C35-4E73-9792-A4EC46383CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7ADAB5D-5C35-4E73-9792-A4EC46383CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3492806-9649-45E4-A5DE-A7EBC248C9A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3492806-9649-45E4-A5DE-A7EBC248C9A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3492806-9649-45E4-A5DE-A7EBC248C9A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3492806-9649-45E4-A5DE-A7EBC248C9A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,5 +150,7 @@ Global
 		{CDC62295-69E6-4232-A963-53FB2989D83B} = {E1C01EE5-BA04-4DCE-9B34-B98CB37B1DC6}
 		{065EB8B9-1974-4946-AAED-7B438813F120} = {E1C01EE5-BA04-4DCE-9B34-B98CB37B1DC6}
 		{3DF6F8F4-2813-4781-9513-C53701AD607C} = {E1C01EE5-BA04-4DCE-9B34-B98CB37B1DC6}
+		{C7ADAB5D-5C35-4E73-9792-A4EC46383CB6} = {B2E41881-169F-4C7D-9577-1B1E51CB9CA9}
+		{E3492806-9649-45E4-A5DE-A7EBC248C9A1} = {B2E41881-169F-4C7D-9577-1B1E51CB9CA9}
 	EndGlobalSection
 EndGlobal
