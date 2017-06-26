@@ -77,8 +77,10 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,6 +152,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Core\ApiControllerBase.cs" />
+    <Compile Include="Core\ISecurityAdapter.cs" />
+    <Compile Include="Core\IServiceAwareController.cs" />
+    <Compile Include="Core\MefAPIDependencyResolver.cs" />
+    <Compile Include="Core\MefDependencyResolver.cs" />
+    <Compile Include="Core\UIHelper.cs" />
+    <Compile Include="Core\UsesDisposableServiceAttribute.cs" />
+    <Compile Include="Core\ViewControllerBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1091,6 +1101,44 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarRental.Client.Bootstrapper\CarRental.Client.Bootstrapper.csproj">
+      <Project>{2cf9ff29-5584-4daa-8fec-c2cfa4606ed1}</Project>
+      <Name>CarRental.Client.Bootstrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Client.Contracts\CarRental.Client.Contracts.csproj">
+      <Project>{86686f46-7084-43c7-af44-135bfb2eacde}</Project>
+      <Name>CarRental.Client.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Client.Entities\CarRental.Client.Entities.csproj">
+      <Project>{8e719fda-7151-48a4-bce6-14b1f5f17c5a}</Project>
+      <Name>CarRental.Client.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Client.Proxies\CarRental.Client.Proxies.csproj">
+      <Project>{d37deca4-dec0-4e00-b887-fab069f7e4e3}</Project>
+      <Name>CarRental.Client.Proxies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Common.Contracts\CarRental.Common.Contracts.csproj">
+      <Project>{a2c32f2b-0cc6-46a1-add9-5030b19ab03a}</Project>
+      <Name>CarRental.Common.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Common\CarRental.Common.csproj">
+      <Project>{c2535d16-c49e-4e14-9ac6-697bf96a4cc1}</Project>
+      <Name>CarRental.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Common.Contracts\Core.Common.Contracts.csproj">
+      <Project>{245aa489-10ea-4c98-aa14-4ad8299eee42}</Project>
+      <Name>Core.Common.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Common.ServiceModel\Core.Common.ServiceModel.csproj">
+      <Project>{607e7eaf-94b1-4abc-a55a-5233206c1c66}</Project>
+      <Name>Core.Common.ServiceModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{511e07f0-a5c3-4939-9a32-21fb7c9be66d}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
