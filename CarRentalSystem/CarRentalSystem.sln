@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{E1C01EE5-BA04-4DCE-9B34-B98CB37B1DC6}"
 EndProject
@@ -64,6 +64,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Client.Bootstrapper", "CarRental.Client.Bootstrapper\CarRental.Client.Bootstrapper.csproj", "{2CF9FF29-5584-4DAA-8FEC-C2CFA4606ED1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Client.Proxies.Tests", "CarRental.Client.Proxies.Tests\CarRental.Client.Proxies.Tests.csproj", "{D65E3809-E9F9-4398-9DB6-0B89EB4D1287}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Web", "CarRental.Web\CarRental.Web.csproj", "{C7555458-A957-4185-81DA-8951420D8732}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,6 +169,10 @@ Global
 		{D65E3809-E9F9-4398-9DB6-0B89EB4D1287}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D65E3809-E9F9-4398-9DB6-0B89EB4D1287}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D65E3809-E9F9-4398-9DB6-0B89EB4D1287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7555458-A957-4185-81DA-8951420D8732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7555458-A957-4185-81DA-8951420D8732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7555458-A957-4185-81DA-8951420D8732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7555458-A957-4185-81DA-8951420D8732}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -196,5 +202,6 @@ Global
 		{D37DECA4-DEC0-4E00-B887-FAB069F7E4E3} = {FF6CB3A8-F17C-4BF4-A852-DFB751EF1DF2}
 		{2CF9FF29-5584-4DAA-8FEC-C2CFA4606ED1} = {FF6CB3A8-F17C-4BF4-A852-DFB751EF1DF2}
 		{D65E3809-E9F9-4398-9DB6-0B89EB4D1287} = {B2E41881-169F-4C7D-9577-1B1E51CB9CA9}
+		{C7555458-A957-4185-81DA-8951420D8732} = {D13FCFC5-2675-41F8-B67F-9D52067A5921}
 	EndGlobalSection
 EndGlobal
