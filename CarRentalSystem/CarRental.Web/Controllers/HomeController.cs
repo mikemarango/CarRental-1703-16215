@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace CarRental.Web.Controllers
 {
+    [Export]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
+    [RoutePrefix("home")]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -13,17 +17,11 @@ namespace CarRental.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        [Route("my")]
+        [Authorize]
+        public ActionResult MyAccount()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
