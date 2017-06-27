@@ -11,8 +11,9 @@
     @Scripts.Render("~/Content/themes/base/css")
 </head>
 <body data-ng-app="appMain">
-        @Html.Partial("~/Views/Shared/_TopBar.cshtml")
-        <div class="wrapper">
+    @Html.Partial("~/Views/Shared/_TopBar.cshtml")
+    <div class="wrapper">
+        <div class="container" style="padding-top: 15px;">
             <div class="content-wrapper main-content clearfix">
                 <div style="margin-top: 35px;">
                     <a href="@Url.Action("Index", "Home")">
@@ -25,7 +26,8 @@
                 </section>
             </div>
         </div>
-        <div class="push"></div>
+    </div>
+    <div class="push"></div>
     @Html.Partial("~/Views/Shared/_BottomBar.cshtml")
 
     <script type="text/javascript">
