@@ -217,6 +217,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Bindings\Models\AccountChangePasswordModel.js" />
+    <Content Include="Scripts\Bindings\Models\AccountLoginModel.js" />
+    <Content Include="Scripts\Bindings\Models\AccountRegisterModel.js" />
+    <Content Include="Scripts\Bindings\ViewModels\AccountChangePasswordViewModel.js" />
+    <Content Include="Scripts\Bindings\ViewModels\AccountLoginViewModel.js" />
+    <Content Include="Scripts\Bindings\ViewModels\AccountRegisterViewModel.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
